@@ -1,6 +1,7 @@
 package com.udacity.jdnd.course3.critter.data;
 
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
+import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;
@@ -8,7 +9,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Employee extends User {
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Nationalized
+    protected String name;
+
     @ElementCollection()
     public Set<EmployeeSkill> skills;
 
@@ -42,6 +51,14 @@ public class Employee extends User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Set<EmployeeSkill> getSkills() {

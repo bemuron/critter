@@ -176,7 +176,7 @@ public class CritterFunctionalTest {
 
         //make a request that matches employee 1 or 2
         EmployeeRequestDTO er1 = new EmployeeRequestDTO();
-        er1.setDate(LocalDate.of(2019, 12, 25)); //wednesday
+        er1.setDate(LocalDate.of(2022, 12, 28)); //wednesday
         er1.setSkills(Sets.newHashSet(EmployeeSkill.PETTING));
 
         Set<Long> eIds1 = userController.findEmployeesForService(er1).stream().map(EmployeeDTO::getId).collect(Collectors.toSet());
@@ -185,7 +185,7 @@ public class CritterFunctionalTest {
 
         //make a request that matches only employee 3
         EmployeeRequestDTO er2 = new EmployeeRequestDTO();
-        er2.setDate(LocalDate.of(2019, 12, 27)); //friday
+        er2.setDate(LocalDate.of(2022, 12, 30)); //friday
         er2.setSkills(Sets.newHashSet(EmployeeSkill.WALKING, EmployeeSkill.SHAVING));
 
         Set<Long> eIds2 = userController.findEmployeesForService(er2).stream().map(EmployeeDTO::getId).collect(Collectors.toSet());

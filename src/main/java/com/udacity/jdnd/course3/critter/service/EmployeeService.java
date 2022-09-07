@@ -6,6 +6,7 @@ import com.udacity.jdnd.course3.critter.user.EmployeeRequestDTO;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
+@Transactional
 public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
@@ -44,6 +46,10 @@ public class EmployeeService {
         } else if (requestDate.getYear() < dateToday.getYear() &&
                 requestDate.getMonthValue() > dateToday.getMonthValue() &&
                 requestDate.getDayOfMonth() > dateToday.getDayOfMonth()) {
+            return null;
+        }else if (requestDate.getYear() < dateToday.getYear() &&
+                requestDate.getMonthValue() == dateToday.getMonthValue() &&
+                requestDate.getDayOfMonth() == dateToday.getDayOfMonth()) {
             return null;
         }
 

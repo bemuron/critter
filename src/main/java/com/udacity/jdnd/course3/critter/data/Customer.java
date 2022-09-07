@@ -7,7 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Customer extends User {
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Nationalized
+    protected String name;
+
     @Nationalized
     private String phoneNumber;
 
@@ -22,7 +29,7 @@ public class Customer extends User {
     }
 
     public Customer(String name, String phoneNumber, List<Pet> pets) {
-        super.name = name;
+        this.name = name;
         this.phoneNumber = phoneNumber;
         this.pets = pets;
     }
@@ -40,6 +47,14 @@ public class Customer extends User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPhoneNumber() {
